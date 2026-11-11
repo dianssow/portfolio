@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #eceff0;
+  --color-paper-2: #dfe5e8;
+  --color-ink: #1b2830;
+  --color-ink-soft: #485860;
+  --color-line: #c3ccd1;
+  --color-brand-red: #d81f16;
+  --color-wall: #27373f;
+  --color-water: #cddbe1;
+  --color-land: #eef0eb;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-condensed:
+    "IBM Plex Sans Condensed", "IBM Plex Sans", "Arial Narrow", system-ui,
+    sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+:root.dark {
+  --color-paper: #12191e;
+  --color-paper-2: #1a242b;
+  --color-ink: #e7ecee;
+  --color-ink-soft: #a3b1b8;
+  --color-line: #2b3941;
+  --color-brand-red: #ff5047;
+  --color-water: #1b2a33;
+  --color-land: #26353d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-paper: #12191e;
+    --color-paper-2: #1a242b;
+    --color-ink: #e7ecee;
+    --color-ink-soft: #a3b1b8;
+    --color-line: #2b3941;
+    --color-brand-red: #ff5047;
+    --color-water: #1b2a33;
+    --color-land: #26353d;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-red);
+  outline-offset: 3px;
+}

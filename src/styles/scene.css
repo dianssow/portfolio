@@ -1,0 +1,604 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  background: #27373f;
+  color: #e7ecee;
+}
+
+.hero :focus-visible {
+  outline-color: #fff;
+}
+
+.stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1100px;
+  height: 640px;
+  transform: translate(-50%, -50%) scale(var(--s, 1));
+}
+
+.stage.portrait {
+  width: 640px;
+}
+
+.world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1100px;
+  height: 640px;
+}
+
+.stage.portrait .world {
+  left: -240px;
+}
+
+.scene-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1100px;
+  height: 640px;
+  overflow: visible;
+}
+
+/* Coffee */
+
+.pot-in {
+  opacity: 0;
+}
+
+.stream {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+
+.steam path {
+  animation: steam 3.6s ease-in-out infinite;
+}
+
+.steam path:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+.steam path:nth-child(3) {
+  animation-delay: 1.8s;
+}
+
+@keyframes steam {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  35% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.stage.play .pot-in {
+  animation: potIn 5.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes potIn {
+  0% {
+    opacity: 0;
+    transform: translate(150px, -150px) rotate(42deg);
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  22%,
+  72% {
+    opacity: 1;
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(150px, -150px) rotate(42deg);
+  }
+}
+
+.stage.play .stream {
+  animation: stream 5.4s linear both;
+}
+
+@keyframes stream {
+  0%,
+  22% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  27% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1);
+  }
+
+  74% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(0.35);
+  }
+
+  76%,
+  100% {
+    opacity: 0;
+    transform: scaleY(1) scaleX(0.2);
+  }
+}
+
+.stage.play .coffee {
+  animation: fill 5.4s cubic-bezier(0.45, 0, 0.3, 1) both;
+}
+
+@keyframes fill {
+  0%,
+  24% {
+    transform: translateY(80px);
+  }
+
+  72%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.stage.play .steam {
+  animation: fadein 1s ease 4.2s backwards;
+}
+
+/* Avatar */
+
+.eyes-sleep,
+.mouth-flat,
+.zzz {
+  opacity: 0;
+}
+
+.eyes-open,
+.eyes-sleep {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.pupils {
+  transform: translateY(4px);
+}
+
+.torso {
+  animation: typing 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes typing {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(2px);
+  }
+}
+
+.stage.play .eyes-sleep {
+  animation: sleepOut 5.4s linear both;
+}
+
+@keyframes sleepOut {
+  0%,
+  72% {
+    opacity: 1;
+  }
+
+  73%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.stage.play .eyes-open {
+  animation: wake 5.4s linear both;
+}
+
+@keyframes wake {
+  0%,
+  72% {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+
+  78% {
+    opacity: 1;
+    transform: scaleY(1.12);
+  }
+
+  84%,
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.stage.play .mouth-flat {
+  animation: sleepOut 5.4s linear both;
+}
+
+.stage.play .mouth-smile,
+.stage.play .blush {
+  animation: smileIn 5.4s linear both;
+}
+
+@keyframes smileIn {
+  0%,
+  72% {
+    opacity: 0;
+  }
+
+  73%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.stage.play .zzz {
+  animation: zzz 4.4s ease-in-out both;
+}
+
+@keyframes zzz {
+  0% {
+    opacity: 0;
+    transform: translate(0, 8px);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(10px, -14px);
+  }
+
+  76%,
+  100% {
+    opacity: 0;
+    transform: translate(14px, -22px);
+  }
+}
+
+.stage.play .pupils {
+  animation: look 7.4s linear both;
+}
+
+@keyframes look {
+  0%,
+  86% {
+    transform: translateY(0);
+  }
+
+  94%,
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+.stage.play .facelight {
+  animation: fadein 1.6s ease 6.4s backwards;
+}
+
+.stage.play .torso {
+  animation: typing 0.55s ease-in-out 7.6s infinite alternate backwards;
+}
+
+/* Laptop */
+
+.laptop-wrap {
+  position: absolute;
+  top: 45px;
+  left: 280px;
+  width: 560px;
+  height: 400px;
+  transform: scale(0.45);
+  transform-origin: 50% 100%;
+  perspective: 1700px;
+  perspective-origin: 50% -150%;
+}
+
+.laptop {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+.shadow {
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  left: -30px;
+  height: 60px;
+  transform: translateZ(-1px);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 560px;
+  height: 14px;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(#303236, #131416);
+}
+
+.deck {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 560px;
+  height: 340px;
+  transform: translateY(-14px) rotateX(90deg);
+  transform-origin: 50% 100%;
+  border-radius: 8px;
+  background: #1c1d20;
+  box-shadow: inset 0 0 0 2px #2a2c30;
+}
+
+.keys {
+  position: absolute;
+  top: 24px;
+  right: 26px;
+  left: 26px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 4px;
+}
+
+.keys i {
+  display: block;
+  height: 33px;
+  border-radius: 4px;
+  background: #2c2e33;
+  box-shadow: inset 0 -3px 0 #101113;
+}
+
+.trackpoint {
+  position: absolute;
+  top: 111px;
+  left: 276px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e2231a;
+  box-shadow: 0 0 0 3px #101113;
+}
+
+.pad {
+  position: absolute;
+  top: 262px;
+  left: 180px;
+  width: 200px;
+  height: 64px;
+  border-radius: 6px;
+  background: #141517;
+  box-shadow: inset 0 0 0 1px #2a2c30;
+}
+
+.lid {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  width: 560px;
+  height: 340px;
+  transform: translate3d(0, -3px, -340px) rotateX(12deg);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+}
+
+.screen,
+.cover {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px 12px 5px 5px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.screen {
+  background: #0e1012;
+  box-shadow: inset 0 0 0 2px #2a2c30;
+}
+
+.cover {
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, #2f3136, #1a1b1e);
+  box-shadow: inset 0 0 0 2px #3a3c41;
+}
+
+.cover span {
+  position: absolute;
+  bottom: 26px;
+  left: 30px;
+  color: #9aa0a7;
+  font-family: var(--font-sans);
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cover span b {
+  color: #e2231a;
+  font-style: normal;
+}
+
+.stage.play .lid {
+  animation: lid 1.9s cubic-bezier(0.3, 0.1, 0.2, 1) 5.2s backwards;
+}
+
+@keyframes lid {
+  from {
+    transform: translate3d(0, -3px, -340px) rotateX(-90deg);
+  }
+
+  72% {
+    transform: translate3d(0, -3px, -340px) rotateX(17deg);
+  }
+
+  to {
+    transform: translate3d(0, -3px, -340px) rotateX(12deg);
+  }
+}
+
+/* Bubble and controls */
+
+.bubble {
+  position: absolute;
+  top: 104px;
+  left: 668px;
+  max-width: 250px;
+  padding: 12px 18px;
+  transform-origin: 0 100%;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18);
+  color: #1b2830;
+  font-family: var(--font-condensed);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.bubble::after {
+  position: absolute;
+  bottom: 20px;
+  left: -9px;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  border-radius: 3px;
+  background: #fff;
+  content: "";
+}
+
+.stage.play .bubble {
+  animation: pop 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) 7.2s backwards;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stage.portrait .bubble {
+  left: 640px;
+}
+
+.ui {
+  position: absolute;
+  z-index: 5;
+  transition: opacity 0.4s;
+}
+
+.replay {
+  top: calc(14px + env(safe-area-inset-top, 0px));
+  left: clamp(20px, 5vw, 64px);
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  color: #b9c6cc;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.enter {
+  position: absolute;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  border: 0;
+  border-radius: 4px;
+  background: var(--color-brand-red);
+  color: #fff;
+  opacity: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.6s;
+}
+
+.hero.ready .enter {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.enter:hover {
+  background: #b9170f;
+}
+
+.enter kbd {
+  padding: 1px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steam path,
+  .torso {
+    animation: none;
+  }
+
+  .steam path {
+    opacity: 0.5;
+  }
+}

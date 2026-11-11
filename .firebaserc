@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "e-dioula"
+  },
+  "targets": {
+    "e-dioula": {
+      "hosting": {
+        "portfolio": [
+          "mdsow"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
